@@ -1,0 +1,37 @@
+<section>
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+
+        <div class="form-input-container">
+            <label for="name">Name</label>
+            <input id="name" type="text" formControlName="name" />
+            <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+                <div class="error-msg" *ngIf="form.get('name')?.errors?.['required']">This field is required</div>
+            </div>
+        </div>
+
+
+        <div class="form-input-container">
+            <label for="dob">DOB</label>
+            <input id="dob" type="date" formControlName="dob" />
+            <div *ngIf="form.get('dob')?.invalid && form.get('dob')?.touched">
+                <div class="error-msg" *ngIf="form.get('dob')?.errors?.['required']">This field is required</div>
+            </div>
+        </div>
+
+
+        <div class="form-input-container">
+            <label for="address">Address</label>
+            <textarea id="address" formControlName="address"></textarea>
+            <div *ngIf="form.get('address')?.invalid && form.get('address')?.touched">
+                <div class="error-msg" *ngIf="form.get('address')?.errors?.['required']">This field is required</div>
+                <div class="error-msg" *ngIf="form.get('address')?.errors?.['invalidAddress']">Invalid address (should
+                    not contain special characters)</div>
+            </div>
+        </div>
+
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+
+    </form>
+</section>
